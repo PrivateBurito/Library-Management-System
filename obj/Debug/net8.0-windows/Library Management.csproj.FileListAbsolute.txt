@@ -1,0 +1,26 @@
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Library Management.exe
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Library Management.deps.json
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Library Management.runtimeconfig.json
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Library Management.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Library Management.pdb
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.LoginForm.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.csproj.GenerateResource.cache
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.AssemblyInfoInputs.cache
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.AssemblyInfo.cs
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.csproj.CoreCompileInputs.cache
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\refint\Library Management.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.pdb
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.genruntimeconfig.cache
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\ref\Library Management.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.RegisterForm.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\Npgsql.dll
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library Management.csproj.AssemblyReference.cache
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library .0D70EAA2.Up2Date
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.Home.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.AddBookForm.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.AdminPanel.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.AddToInvetoryForm.resources
