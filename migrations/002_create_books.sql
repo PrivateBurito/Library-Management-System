@@ -1,0 +1,6 @@
+CREATE TABLE books (
+    id INTEGER UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    year INTEGER
+);

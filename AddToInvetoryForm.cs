@@ -16,5 +16,10 @@ namespace Library_Management
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

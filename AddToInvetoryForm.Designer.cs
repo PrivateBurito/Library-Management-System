@@ -43,6 +43,7 @@
             button1.TabIndex = 0;
             button1.Text = "Add Book";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
