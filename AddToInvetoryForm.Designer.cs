@@ -56,7 +56,6 @@
             // BookDropDown
             // 
             BookDropDown.FormattingEnabled = true;
-            BookDropDown.Items.AddRange(new object[] { "item1", "item2" });
             BookDropDown.Location = new Point(27, 222);
             BookDropDown.Name = "BookDropDown";
             BookDropDown.Size = new Size(121, 23);
@@ -80,7 +79,8 @@
             Controls.Add(dataGridView1);
             Controls.Add(button1);
             Name = "AddToInvetoryForm";
-            Text = "AddToInvetoryForm";
+            Text = "Add to Inventory";
+            Load += AddToInvetoryForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
