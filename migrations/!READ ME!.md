@@ -6,7 +6,7 @@
 
 **2. Input this inside the Terminal:** 
 
-psql -U postgres -d librarymanage -f \[.sql file name]
+psql -U postgres -d librarymanage -f [.sql file name]
 
 
 

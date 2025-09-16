@@ -1,0 +1,5 @@
+CREATE TABLE inventory1 (
+    id SERIAL PRIMARY KEY,
+    quantity INTEGER NOT NULL,
+    book_id INTEGER REFERENCES books(id) ON DELETE RESTRICT UNIQUE NOT NULL
+);
