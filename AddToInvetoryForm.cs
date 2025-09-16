@@ -90,9 +90,50 @@ namespace Library_Management
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewCell clickedCell = BookGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                DataGridViewCell clickedCell = BookGrid.Rows[e.RowIndex].Cells[0];
+
                 object cellValue = clickedCell.Value;
-                BookTextBox.Text = cellValue.ToString();
+                string? cellValueString = cellValue.ToString();
+                if (string.IsNullOrEmpty(cellValueString)) { return; }
+                BookTextBox.Text = cellValueString;
+
+                updateInfoLabels(cellValueString);
+            }
+        }
+
+        private void updateInfoLabels(string bookIDString)
+        {
+            int bookID = int.Parse(bookIDString);
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM books WHERE id = @id";
+                try
+                {
+                    using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("id", bookID);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string? bookName = reader["name"].ToString();
+                                string? author = reader["author"].ToString();
+                                string? year = reader["year"].ToString();
+
+                                BookNameLabel.Text = bookName;
+                                AuthorLabel.Text = author;
+                                YearPublishedLabel.Text = year;
+                                IDLabel.Text = bookIDString;
+                            }
+                            
+                        }
+                    }
+                }
+                catch (Exception ex)
+                { 
+                    MessageBox.Show(ex.Message); 
+                }
             }
         }
     }
