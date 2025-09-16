@@ -24,7 +24,7 @@ namespace Library_Management
 
         }
 
-        private void updateGridData()
+        private void updateInventoryGrid()
         {
             BindingSource bindingSource = new BindingSource();
             string query = "SELECT * FROM inventory";
@@ -38,11 +38,39 @@ namespace Library_Management
                     adapter.Fill(dataTable);
                     bindingSource.DataSource = dataTable;
 
-                    dataGridView1.DataSource = dataTable;
+                    InventoryGrid.DataSource = dataTable;
                     DataGridViewColumn column = new DataGridViewColumn();
                     column.MinimumWidth = 10;
                     column.FillWeight = 30;
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    InventoryGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void updateBookGrid()
+        {
+            BindingSource bindingSource = new BindingSource();
+            string query = "SELECT * FROM books";
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    Npgsql.NpgsqlDataAdapter adapter = new Npgsql.NpgsqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    bindingSource.DataSource = dataTable;
+
+                    BookGrid.DataSource = dataTable;
+                    DataGridViewColumn column = new DataGridViewColumn();
+                    column.MinimumWidth = 10;
+                    column.FillWeight = 30;
+                    BookGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 }
                 catch (Exception ex)
@@ -54,7 +82,18 @@ namespace Library_Management
 
         private void AddToInvetoryForm_Load(object sender, EventArgs e)
         {
-            updateGridData();
+            updateInventoryGrid();
+            updateBookGrid();
+        }
+
+        private void BookGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell clickedCell = BookGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                object cellValue = clickedCell.Value;
+                BookTextBox.Text = cellValue.ToString();
+            }
         }
     }
 }

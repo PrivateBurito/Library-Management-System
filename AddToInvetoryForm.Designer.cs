@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            dataGridView1 = new DataGridView();
-            BookDropDown = new ComboBox();
+            InventoryGrid = new DataGridView();
             textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            BookGrid = new DataGridView();
+            BookTextBox = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)InventoryGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BookGrid).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(94, 251);
+            button1.Location = new Point(172, 261);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -45,21 +47,13 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // dataGridView1
+            // InventoryGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(27, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(554, 176);
-            dataGridView1.TabIndex = 1;
-            // 
-            // BookDropDown
-            // 
-            BookDropDown.FormattingEnabled = true;
-            BookDropDown.Location = new Point(27, 222);
-            BookDropDown.Name = "BookDropDown";
-            BookDropDown.Size = new Size(121, 23);
-            BookDropDown.TabIndex = 3;
+            InventoryGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            InventoryGrid.Location = new Point(320, 12);
+            InventoryGrid.Name = "InventoryGrid";
+            InventoryGrid.Size = new Size(271, 176);
+            InventoryGrid.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -69,19 +63,38 @@
             textBox1.Size = new Size(77, 23);
             textBox1.TabIndex = 4;
             // 
+            // BookGrid
+            // 
+            BookGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            BookGrid.Location = new Point(27, 12);
+            BookGrid.Name = "BookGrid";
+            BookGrid.Size = new Size(271, 176);
+            BookGrid.TabIndex = 6;
+            BookGrid.CellClick += BookGrid_CellClick;
+            // 
+            // BookTextBox
+            // 
+            BookTextBox.Location = new Point(27, 222);
+            BookTextBox.Name = "BookTextBox";
+            BookTextBox.PlaceholderText = "Input Book ID Here";
+            BookTextBox.Size = new Size(139, 23);
+            BookTextBox.TabIndex = 7;
+            // 
             // AddToInvetoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(605, 338);
+            Controls.Add(BookTextBox);
+            Controls.Add(BookGrid);
             Controls.Add(textBox1);
-            Controls.Add(BookDropDown);
-            Controls.Add(dataGridView1);
+            Controls.Add(InventoryGrid);
             Controls.Add(button1);
             Name = "AddToInvetoryForm";
             Text = "Add to Inventory";
             Load += AddToInvetoryForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)InventoryGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BookGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -89,8 +102,10 @@
         #endregion
 
         private Button button1;
-        private DataGridView dataGridView1;
-        private ComboBox BookDropDown;
+        private DataGridView InventoryGrid;
         private TextBox textBox1;
+        private Label label1;
+        private DataGridView BookGrid;
+        private TextBox BookTextBox;
     }
 }
