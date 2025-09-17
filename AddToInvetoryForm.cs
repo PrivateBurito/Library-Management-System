@@ -19,11 +19,6 @@ namespace Library_Management
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void updateInventoryGrid()
         {
             BindingSource bindingSource = new BindingSource();
@@ -126,13 +121,41 @@ namespace Library_Management
                                 YearPublishedLabel.Text = year;
                                 IDLabel.Text = bookIDString;
                             }
-                            
+
                         }
                     }
                 }
                 catch (Exception ex)
-                { 
-                    MessageBox.Show(ex.Message); 
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void AddBookButton_Click(object sender, EventArgs e)
+        {
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                int quantityInt = int.Parse(QuantityBox.Text);
+                int book_idInt = int.Parse(BookTextBox.Text);
+                connection.Open();
+                try
+                {
+                    string query = "INSERT INTO inventory(quantity, book_id) VALUES (" +
+                        "@quantity, @book_id)";
+                    using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("quantity", quantityInt);
+                        command.Parameters.AddWithValue("book_id", book_idInt);
+
+                        MessageBox.Show("Added " + BookTextBox.Text);
+                        command.ExecuteNonQuery();
+                        updateInventoryGrid();
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

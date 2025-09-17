@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            AddBookButton = new Button();
             InventoryGrid = new DataGridView();
-            textBox1 = new TextBox();
+            QuantityBox = new TextBox();
             BookGrid = new DataGridView();
             BookTextBox = new TextBox();
             groupBox1 = new GroupBox();
@@ -49,15 +49,15 @@
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // AddBookButton
             // 
-            button1.Location = new Point(172, 261);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Add Book";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            AddBookButton.Location = new Point(172, 261);
+            AddBookButton.Name = "AddBookButton";
+            AddBookButton.Size = new Size(75, 23);
+            AddBookButton.TabIndex = 0;
+            AddBookButton.Text = "Add Book";
+            AddBookButton.UseVisualStyleBackColor = true;
+            AddBookButton.Click += AddBookButton_Click;
             // 
             // InventoryGrid
             // 
@@ -68,13 +68,13 @@
             InventoryGrid.Size = new Size(271, 149);
             InventoryGrid.TabIndex = 1;
             // 
-            // textBox1
+            // QuantityBox
             // 
-            textBox1.Location = new Point(172, 222);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Quantity";
-            textBox1.Size = new Size(77, 23);
-            textBox1.TabIndex = 4;
+            QuantityBox.Location = new Point(172, 222);
+            QuantityBox.Name = "QuantityBox";
+            QuantityBox.PlaceholderText = "Quantity";
+            QuantityBox.Size = new Size(77, 23);
+            QuantityBox.TabIndex = 4;
             // 
             // BookGrid
             // 
@@ -215,9 +215,9 @@
             Controls.Add(groupBox1);
             Controls.Add(BookTextBox);
             Controls.Add(BookGrid);
-            Controls.Add(textBox1);
+            Controls.Add(QuantityBox);
             Controls.Add(InventoryGrid);
-            Controls.Add(button1);
+            Controls.Add(AddBookButton);
             Name = "AddToInvetoryForm";
             Text = "Add to Inventory";
             Load += AddToInvetoryForm_Load;
@@ -231,9 +231,9 @@
 
         #endregion
 
-        private Button button1;
+        private Button AddBookButton;
         private DataGridView InventoryGrid;
-        private TextBox textBox1;
+        private TextBox QuantityBox;
         private Label BookNameLabel;
         private DataGridView BookGrid;
         private TextBox BookTextBox;
