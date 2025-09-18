@@ -141,17 +141,33 @@ namespace Library_Management
                 connection.Open();
                 try
                 {
-                    string query = "INSERT INTO inventory(quantity, book_id) VALUES (" +
+                    string addBookQuery = "INSERT INTO inventory(quantity, book_id) VALUES (" +
                         "@quantity, @book_id)";
-                    using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("quantity", quantityInt);
-                        command.Parameters.AddWithValue("book_id", book_idInt);
+                    string getDetailsQuery = "SELECT * FROM books WHERE id = @id";
 
-                        MessageBox.Show("Added " + BookTextBox.Text);
-                        command.ExecuteNonQuery();
+                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addBookQuery, connection))
+                    {
+                        comm1.Parameters.AddWithValue("quantity", quantityInt);
+                        comm1.Parameters.AddWithValue("book_id", book_idInt);
+                        comm1.ExecuteNonQuery();
                         updateInventoryGrid();
                     }
+                    using (Npgsql.NpgsqlCommand comm2 = new Npgsql.NpgsqlCommand(getDetailsQuery, connection))
+                    {
+                        comm2.Parameters.AddWithValue("id", book_idInt);
+                        using (var reader = comm2.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string? bookName = reader["name"].ToString();
+                                MessageBox.Show("Added " + bookName);
+                            }
+                        }
+                    }
+
+
+
+
                 }
                 catch (Exception ex) 
                 {
