@@ -61,8 +61,11 @@
             // 
             // InventoryGrid
             // 
+            InventoryGrid.AllowUserToAddRows = false;
+            InventoryGrid.AllowUserToDeleteRows = false;
             InventoryGrid.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             InventoryGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            InventoryGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
             InventoryGrid.Location = new Point(313, 39);
             InventoryGrid.Name = "InventoryGrid";
             InventoryGrid.Size = new Size(271, 149);
@@ -78,7 +81,10 @@
             // 
             // BookGrid
             // 
+            BookGrid.AllowUserToAddRows = false;
+            BookGrid.AllowUserToDeleteRows = false;
             BookGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            BookGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
             BookGrid.Location = new Point(20, 39);
             BookGrid.Name = "BookGrid";
             BookGrid.Size = new Size(271, 149);

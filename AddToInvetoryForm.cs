@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -145,6 +146,7 @@ namespace Library_Management
                         "@quantity, @book_id)";
                     string getDetailsQuery = "SELECT * FROM books WHERE id = @id";
 
+                    // Add books to inventory
                     using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addBookQuery, connection))
                     {
                         comm1.Parameters.AddWithValue("quantity", quantityInt);
@@ -152,6 +154,8 @@ namespace Library_Management
                         comm1.ExecuteNonQuery();
                         updateInventoryGrid();
                     }
+
+                    // shows the book name in success message
                     using (Npgsql.NpgsqlCommand comm2 = new Npgsql.NpgsqlCommand(getDetailsQuery, connection))
                     {
                         comm2.Parameters.AddWithValue("id", book_idInt);
@@ -164,12 +168,39 @@ namespace Library_Management
                             }
                         }
                     }
-
-
-
-
                 }
-                catch (Exception ex) 
+                catch (PostgresException ex) 
+                {
+                    // Detects the unique restraint on book_id
+                    if (ex.SqlState == "23505")
+                    {
+                        increaseQuantityOfBook(book_idInt, quantityInt);
+                    }
+                }
+            }
+        }
+
+        private void increaseQuantityOfBook(int book_id, int quantity)
+        {
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    string addQuantityQuery = "UPDATE inventory SET quantity = quantity + @quantity " +
+                        "WHERE book_id = @id";
+                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addQuantityQuery, connection))
+                    {
+                        comm1.Parameters.AddWithValue("quantity", quantity);
+                        comm1.Parameters.AddWithValue("id", book_id);
+
+                        comm1.ExecuteNonQuery();
+                        updateInventoryGrid();
+
+                        MessageBox.Show("Added " + quantity + " books.");
+                    }
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
