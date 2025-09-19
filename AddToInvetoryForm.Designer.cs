@@ -44,6 +44,7 @@
             label2 = new Label();
             label1 = new Label();
             label6 = new Label();
+            DeleteBookButton = new Button();
             ((System.ComponentModel.ISupportInitialize)InventoryGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BookGrid).BeginInit();
             groupBox1.SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             // AddBookButton
             // 
-            AddBookButton.Location = new Point(172, 261);
+            AddBookButton.Location = new Point(172, 251);
             AddBookButton.Name = "AddBookButton";
             AddBookButton.Size = new Size(75, 23);
             AddBookButton.TabIndex = 0;
@@ -211,11 +212,22 @@
             label6.TabIndex = 10;
             label6.Text = "Inventory";
             // 
+            // DeleteBookButton
+            // 
+            DeleteBookButton.Location = new Point(172, 280);
+            DeleteBookButton.Name = "DeleteBookButton";
+            DeleteBookButton.Size = new Size(75, 23);
+            DeleteBookButton.TabIndex = 11;
+            DeleteBookButton.Text = "Delete";
+            DeleteBookButton.UseVisualStyleBackColor = true;
+            DeleteBookButton.Click += DeleteBookButton_Click;
+            // 
             // AddToInvetoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(605, 338);
+            Controls.Add(DeleteBookButton);
             Controls.Add(label6);
             Controls.Add(label1);
             Controls.Add(groupBox1);
@@ -253,5 +265,6 @@
         private Label IDLabel;
         private Label label1;
         private Label label6;
+        private Button DeleteBookButton;
     }
 }
