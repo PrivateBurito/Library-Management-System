@@ -218,12 +218,20 @@ namespace Library_Management
                     int book_idInt = int.Parse(BookTextBox.Text.Trim());
                     int quantityInt = int.Parse(QuantityBox.Text.Trim());
                     bool hasRemainingQuantity = false;
+                    bool shouldDelete = false;
                     string errorMessage = "";
                     string selectQuery = "SELECT * FROM inventory WHERE book_id = @book_id";
+                    string deleteBookQuery = "DELETE FROM inventory WHERE book_id = @book_id";
                     string subtractBookQuery = "UPDATE inventory SET quantity = quantity - @quantity " +
                         "WHERE book_id = @book_id";
                     using (Npgsql.NpgsqlCommand comm2 = new NpgsqlCommand(selectQuery, connection))
                     {
+                        if (InventoryGrid.Rows.Count <= 0)
+                        {
+                            MessageBox.Show("Inventory is empty.");
+                            return;
+                        }
+
                         int? remainingAmount = 0;
                         comm2.Parameters.AddWithValue("book_id", book_idInt);
                         using (var reader = comm2.ExecuteReader())
@@ -255,8 +263,7 @@ namespace Library_Management
                         }
                         else if (remainingAmount == 0)
                         {
-                            // handle delete here
-                            hasRemainingQuantity = false;
+                            shouldDelete = true;
                             errorMessage = "Book will be deleted from inventory.";
                         }
                     }
@@ -270,6 +277,16 @@ namespace Library_Management
                             comm1.ExecuteNonQuery();
                             updateInventoryGrid();
                             MessageBox.Show("Removed " + quantityInt + " books from inventory.");
+                        }
+                    }
+                    else if (shouldDelete == true) 
+                    {
+                        using (Npgsql.NpgsqlCommand comm3 = new Npgsql.NpgsqlCommand(deleteBookQuery, connection))
+                        {
+                            comm3.Parameters.AddWithValue("book_id", book_idInt);
+                            comm3.ExecuteNonQuery();
+                            updateInventoryGrid();
+                            MessageBox.Show("Success!");
                         }
                     }
                     else
