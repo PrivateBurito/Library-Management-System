@@ -7,6 +7,7 @@
 **2. Input this inside the Terminal:** 
 
 psql -U postgres -d librarymanage -f [.sql file name]
+*note: be sure the password to your postgreSQL is also 12345678 in order for the scripts to work
 
 
 
@@ -22,7 +23,7 @@ psql -U postgres -d librarymanage -f [.sql file name]
 
 
 
-**2.2 Error found!**
+**3 Error found!**
 
 If it says: "psql is not recognized", that means PostgreSQL is not inserted to the environment variables, just google "how to put postgres to env" or something like that, just dont delete random variables there
 

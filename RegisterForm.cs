@@ -31,7 +31,7 @@ namespace Library_Management
                 {
                     connection.Open();
 
-                    string pword = PasswordBox.Text;
+                    string pword = PasswordBox.Text.Trim();
                     string query = "INSERT INTO users (username, password_hash, first_name, middle_name, last_name, is_admin, email) " +
                         " VALUES (@username, crypt('" + pword + "', gen_salt('bf', 10)), @fName, @mName, @lName, @admin, @email)";
 
