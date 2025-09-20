@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|c:\\users\\kenneth\\documents\\visual studio 2022\\projects\\library management\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -30,7 +34,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddToInvetoryForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddToInvetoryForm.cs",
               "RelativeDocumentMoniker": "AddToInvetoryForm.cs",
@@ -49,10 +53,23 @@
               "RelativeDocumentMoniker": "AddToInvetoryForm.cs",
               "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddToInvetoryForm.cs",
               "RelativeToolTip": "AddToInvetoryForm.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAYwCsBAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAALgAAAAAAAAAAAAUwM4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T14:33:23.8Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TODO.txt",
+              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\TODO.txt",
+              "RelativeDocumentMoniker": "TODO.txt",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\TODO.txt",
+              "RelativeToolTip": "TODO.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-20T16:55:29.376Z",
               "EditorCaption": ""
             },
             {
@@ -69,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AddBookForm.cs",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs",
               "RelativeDocumentMoniker": "AddBookForm.cs",
@@ -82,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AddBookForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs",
               "RelativeDocumentMoniker": "AddBookForm.cs",

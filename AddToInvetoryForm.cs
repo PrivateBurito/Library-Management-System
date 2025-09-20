@@ -143,20 +143,12 @@ namespace Library_Management
                 connection.Open();
                 try
                 {
-                    string addBookQuery = "INSERT INTO inventory(quantity, book_id) VALUES (" +
-                        "@quantity, @book_id)";
+                    string? bookName = "";
+                    string addBookQuery = "INSERT INTO inventory(quantity, book_id, name) VALUES (" +
+                        "@quantity, @book_id, @name)";
                     string getDetailsQuery = "SELECT * FROM books WHERE id = @id";
 
-                    // Add books to inventory
-                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addBookQuery, connection))
-                    {
-                        comm1.Parameters.AddWithValue("quantity", quantityInt);
-                        comm1.Parameters.AddWithValue("book_id", book_idInt);
-                        comm1.ExecuteNonQuery();
-                        updateInventoryGrid();
-                    }
-
-                    // shows the book name in success message
+                    // gets the book name
                     using (Npgsql.NpgsqlCommand comm2 = new Npgsql.NpgsqlCommand(getDetailsQuery, connection))
                     {
                         comm2.Parameters.AddWithValue("id", book_idInt);
@@ -164,10 +156,23 @@ namespace Library_Management
                         {
                             if (reader.Read())
                             {
-                                string? bookName = reader["name"].ToString();
-                                MessageBox.Show("Added " + bookName);
+                                bookName = reader["name"].ToString();
                             }
                         }
+                    }
+                    if (bookName is null)
+                    {
+                        bookName = "NULL";
+                    }
+                    // Add books to inventory
+                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addBookQuery, connection))
+                    {
+                        comm1.Parameters.AddWithValue("quantity", quantityInt);
+                        comm1.Parameters.AddWithValue("book_id", book_idInt);
+                        comm1.Parameters.AddWithValue("name", bookName);
+                        comm1.ExecuteNonQuery();
+                        updateInventoryGrid();
+                        MessageBox.Show("Added " + bookName);
                     }
                 }
                 catch (PostgresException ex)
