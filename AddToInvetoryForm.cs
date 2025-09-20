@@ -210,23 +210,68 @@ namespace Library_Management
 
         private void DeleteBookButton_Click(object sender, EventArgs e)
         {
-            int book_idInt = int.Parse(BookTextBox.Text.Trim());
-            int quantityInt = int.Parse(QuantityBox.Text.Trim());
             using (Npgsql.NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
                 try
                 {
-                    string query = "UPDATE inventory SET quantity = quantity - @quantity " +
+                    int book_idInt = int.Parse(BookTextBox.Text.Trim());
+                    int quantityInt = int.Parse(QuantityBox.Text.Trim());
+                    bool hasRemainingQuantity = false;
+                    string errorMessage = "";
+                    string selectQuery = "SELECT * FROM inventory WHERE book_id = @book_id";
+                    string subtractBookQuery = "UPDATE inventory SET quantity = quantity - @quantity " +
                         "WHERE book_id = @book_id";
-                    using (Npgsql.NpgsqlCommand comm1 = new NpgsqlCommand(query, connection))
+                    using (Npgsql.NpgsqlCommand comm2 = new NpgsqlCommand(selectQuery, connection))
                     {
-                        comm1.Parameters.AddWithValue("quantity", quantityInt);
-                        comm1.Parameters.AddWithValue("book_id", book_idInt);
+                        int? remainingAmount = 0;
+                        comm2.Parameters.AddWithValue("book_id", book_idInt);
+                        using (var reader = comm2.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string? x = reader["quantity"].ToString();
+                                int? quantityInv = 0;
+                                if (x == null) 
+                                {
+                                    x = "0"; 
+                                } else
+                                {
+                                    quantityInv = int.Parse(x);
+                                }
+                                    
+                                remainingAmount = quantityInv - quantityInt;
+                            }
+                        }
+                        if (remainingAmount > 0)
+                        {
+                            hasRemainingQuantity = true;
+                        } else if (remainingAmount < 0)
+                        {
+                            hasRemainingQuantity = false;
+                            errorMessage = "Quantity to be deleted exceeds current stock.";
+                        } else if (remainingAmount == 0)
+                        {
+                            // handle delete here
+                            hasRemainingQuantity = false;
+                            errorMessage = "Book will be deleted from inventory.";
+                        }
+                    }
+                    if (hasRemainingQuantity == true)
+                    {
+                        using (Npgsql.NpgsqlCommand comm1 = new NpgsqlCommand(subtractBookQuery, connection))
+                        {
+                            comm1.Parameters.AddWithValue("quantity", quantityInt);
+                            comm1.Parameters.AddWithValue("book_id", book_idInt);
 
-                        comm1.ExecuteNonQuery();
-                        updateInventoryGrid();
-                        MessageBox.Show("Success!");
+                            comm1.ExecuteNonQuery();
+                            updateInventoryGrid();
+                            MessageBox.Show("Removed " + quantityInt + " books from inventory.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(errorMessage);
                     }
                 }
                 catch (Exception ex) 

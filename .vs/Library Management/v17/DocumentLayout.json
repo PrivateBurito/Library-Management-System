@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|c:\\users\\kenneth\\documents\\visual studio 2022\\projects\\library management\\addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addtoinvetoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -49,11 +49,15 @@
               "RelativeDocumentMoniker": "AddToInvetoryForm.cs",
               "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddToInvetoryForm.cs",
               "RelativeToolTip": "AddToInvetoryForm.cs",
-              "ViewState": "AgIAAM4AAAAAAAAAAAAmwNUAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAAANoAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T14:33:23.8Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
