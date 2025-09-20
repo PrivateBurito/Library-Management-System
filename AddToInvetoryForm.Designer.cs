@@ -71,6 +71,7 @@
             InventoryGrid.Name = "InventoryGrid";
             InventoryGrid.Size = new Size(271, 149);
             InventoryGrid.TabIndex = 1;
+            InventoryGrid.CellClick += InventoryGrid_CellClick;
             // 
             // QuantityBox
             // 

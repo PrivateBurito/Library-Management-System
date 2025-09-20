@@ -232,25 +232,28 @@ namespace Library_Management
                             {
                                 string? x = reader["quantity"].ToString();
                                 int? quantityInv = 0;
-                                if (x == null) 
+                                if (x == null)
                                 {
-                                    x = "0"; 
-                                } else
+                                    x = "0";
+                                }
+                                else
                                 {
                                     quantityInv = int.Parse(x);
                                 }
-                                    
+
                                 remainingAmount = quantityInv - quantityInt;
                             }
                         }
                         if (remainingAmount > 0)
                         {
                             hasRemainingQuantity = true;
-                        } else if (remainingAmount < 0)
+                        }
+                        else if (remainingAmount < 0)
                         {
                             hasRemainingQuantity = false;
                             errorMessage = "Quantity to be deleted exceeds current stock.";
-                        } else if (remainingAmount == 0)
+                        }
+                        else if (remainingAmount == 0)
                         {
                             // handle delete here
                             hasRemainingQuantity = false;
@@ -274,10 +277,25 @@ namespace Library_Management
                         MessageBox.Show(errorMessage);
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }    
+                }
+            }
+        }
+
+        private void InventoryGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell clickedCell = InventoryGrid.Rows[e.RowIndex].Cells[2];
+
+                object cellValue = clickedCell.Value;
+                string? cellValueString = cellValue.ToString();
+                if (string.IsNullOrEmpty(cellValueString)) { return; }
+                BookTextBox.Text = cellValueString;
+
+                updateInfoLabels(cellValueString);
             }
         }
     }
