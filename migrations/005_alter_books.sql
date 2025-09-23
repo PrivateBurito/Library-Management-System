@@ -1,0 +1,16 @@
+DROP TABLE books CASCADE;
+
+CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    year INTEGER,
+    barcode_id INTEGER UNIQUE NOT NULL
+);
+
+CREATE TABLE inventory (
+    id SERIAL PRIMARY KEY,
+    quantity INTEGER NOT NULL,
+    book_id INTEGER REFERENCES books(id) ON DELETE RESTRICT UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL
+);

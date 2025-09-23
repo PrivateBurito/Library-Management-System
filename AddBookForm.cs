@@ -31,15 +31,15 @@ namespace Library_Management
                     Random random = new Random();
                     int idString = generateUniqueID();
                     int yearInt = int.Parse(YearBox.Text);
-                    string query = "INSERT INTO books(id, name, author, year) VALUES (" +
-                        "@id, @name, @author, @year)";
+                    string query = "INSERT INTO books(name, author, year, barcode_id) VALUES (" +
+                        "@name, @author, @year, @barcode_id)";
 
                     using (Npgsql.NpgsqlCommand cmd = new Npgsql.NpgsqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", idString);
-                        cmd.Parameters.AddWithValue("@name", NameBox.Text);
-                        cmd.Parameters.AddWithValue("@author", AuthorBox.Text);
-                        cmd.Parameters.AddWithValue("@year", yearInt);
+                        cmd.Parameters.AddWithValue("barcode_id", idString);
+                        cmd.Parameters.AddWithValue("name", NameBox.Text);
+                        cmd.Parameters.AddWithValue("author", AuthorBox.Text);
+                        cmd.Parameters.AddWithValue("year", yearInt);
 
                         MessageBox.Show("Added " + NameBox.Text);
                         cmd.ExecuteNonQuery();
@@ -70,11 +70,11 @@ namespace Library_Management
                 using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(*) FROM books WHERE id = @id ";
+                    string query = "SELECT COUNT(*) FROM books WHERE barcode_id = @barcode_id ";
 
                     using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@id", idString);
+                        command.Parameters.AddWithValue("barcode_id", idString);
 
                         int matchCount = Convert.ToInt32(command.ExecuteScalar());
                         if (matchCount > 0)
