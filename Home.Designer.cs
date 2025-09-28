@@ -30,6 +30,7 @@
         {
             WelcomeLabel = new Label();
             button1 = new Button();
+            BorrowButton = new Button();
             SuspendLayout();
             // 
             // WelcomeLabel
@@ -52,11 +53,22 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // BorrowButton
+            // 
+            BorrowButton.Location = new Point(186, 209);
+            BorrowButton.Name = "BorrowButton";
+            BorrowButton.Size = new Size(75, 75);
+            BorrowButton.TabIndex = 3;
+            BorrowButton.Text = "Borrow Book";
+            BorrowButton.UseVisualStyleBackColor = true;
+            BorrowButton.Click += BorrowButton_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 336);
+            Controls.Add(BorrowButton);
             Controls.Add(button1);
             Controls.Add(WelcomeLabel);
             Name = "Home";
@@ -69,5 +81,6 @@
         #endregion
         private Label WelcomeLabel;
         private Button button1;
+        private Button BorrowButton;
     }
 }

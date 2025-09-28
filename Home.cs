@@ -35,8 +35,7 @@ namespace Library_Management
         private void button1_Click(object sender, EventArgs e)
         {
             AdminPanel adminPanel = new AdminPanel();
-            adminPanel.Show();
-            this.Close();
+            adminPanel.ShowDialog();
         }
 
         private void accessUserID()
@@ -71,6 +70,12 @@ namespace Library_Management
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void BorrowButton_Click(object sender, EventArgs e)
+        {
+            BorrowForm borrowForm = new BorrowForm();
+            borrowForm.ShowDialog();
         }
     }
 }

@@ -10,6 +10,15 @@
     <Compile Update="AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Borrow Forms\SelectBookBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SelectUserBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BorrowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Home.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -4,3 +4,8 @@ Inventory Feature:
 1. (COMPLETE) Delete function to delete items from inventory 
 2. (COMPLETE) Subract quantity function to decrease the quantities of items in inventory
 3. (COMPLETE) Add book name to the inventory schema
+
+Borrow Feature:
+1. Add borrow binded to user id
+2. Add multiple borrows at the same time
+3. Remove borrows
