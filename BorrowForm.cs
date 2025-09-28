@@ -61,13 +61,14 @@ namespace Library_Management
 
         private void updateInfoLabels(string bookIDString)
         {
-            int bookID = int.Parse(bookIDString);
+            
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
                 string query = "SELECT * FROM books WHERE id = @id";
                 try
                 {
+                    int bookID = int.Parse(bookIDString);
                     using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("id", bookID);
@@ -114,9 +115,43 @@ namespace Library_Management
                 string inventoryReturn = selectBookBorrow.inventoryReturn;
                 inventoryID = inventoryReturn;
                 BookBox.Text = bookReturn;
+                inventoryID = getInvetoryID(bookReturn);
                 updateInfoLabels(bookReturn);
             }
             selectBookBorrow.Dispose();
+        }
+
+        private string getInvetoryID(string bookIDString) 
+        {
+            string inventoryReturn = "";
+            string query = "SELECT id FROM inventory WHERE book_id = @book_id";
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    int bookID = int.Parse(bookIDString);
+                    connection.Open();
+                    using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("book_id", bookID);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                inventoryReturn = reader["id"].ToString();
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            return inventoryReturn;
         }
     }
 }
