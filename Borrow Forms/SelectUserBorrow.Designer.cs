@@ -83,7 +83,7 @@
             groupBox1.Size = new Size(231, 107);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Selected Book Information";
+            groupBox1.Text = "Selected User Information";
             // 
             // EmailLabel
             // 

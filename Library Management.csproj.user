@@ -13,7 +13,7 @@
     <Compile Update="Borrow Forms\SelectBookBorrow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SelectUserBorrow.cs">
+    <Compile Update="Borrow Forms\SelectUserBorrow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="BorrowForm.cs">

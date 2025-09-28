@@ -14,6 +14,7 @@ namespace Library_Management
     public partial class BorrowForm : Form
     {
         string connectionString = "Host=localhost;Port=5432;Database=librarymanage;Username=postgres;Password=12345678;";
+        string inventoryID = "";
         public BorrowForm()
         {
             InitializeComponent();
@@ -109,7 +110,11 @@ namespace Library_Management
             SelectBookBorrow selectBookBorrow = new SelectBookBorrow();
             if (selectBookBorrow.ShowDialog() == DialogResult.OK)
             {
-                
+                string bookReturn = selectBookBorrow.bookReturn;
+                string inventoryReturn = selectBookBorrow.inventoryReturn;
+                inventoryID = inventoryReturn;
+                BookBox.Text = bookReturn;
+                updateInfoLabels(bookReturn);
             }
             selectBookBorrow.Dispose();
         }

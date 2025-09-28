@@ -44,6 +44,7 @@
             BookBox = new TextBox();
             SelectUserButton = new Button();
             SelectBookButton = new Button();
+            QuantityBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -60,7 +61,7 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(154, 268);
+            AddButton.Location = new Point(154, 257);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(91, 23);
             AddButton.TabIndex = 2;
@@ -207,11 +208,20 @@
             SelectBookButton.UseVisualStyleBackColor = true;
             SelectBookButton.Click += SelectBookButton_Click;
             // 
+            // QuantityBox
+            // 
+            QuantityBox.Location = new Point(23, 257);
+            QuantityBox.Name = "QuantityBox";
+            QuantityBox.PlaceholderText = "Quantity";
+            QuantityBox.Size = new Size(100, 23);
+            QuantityBox.TabIndex = 14;
+            // 
             // BorrowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(727, 314);
+            Controls.Add(QuantityBox);
             Controls.Add(SelectBookButton);
             Controls.Add(SelectUserButton);
             Controls.Add(BookBox);
@@ -247,5 +257,6 @@
         private TextBox BookBox;
         private Button SelectUserButton;
         private Button SelectBookButton;
+        private TextBox QuantityBox;
     }
 }
