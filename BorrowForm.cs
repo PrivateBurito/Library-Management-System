@@ -14,7 +14,7 @@ namespace Library_Management
     public partial class BorrowForm : Form
     {
         string connectionString = "Host=localhost;Port=5432;Database=librarymanage;Username=postgres;Password=12345678;";
-        string inventoryID = "";
+        string inventoryIDString = "";
         public BorrowForm()
         {
             InitializeComponent();
@@ -22,7 +22,47 @@ namespace Library_Management
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                int current_state = 0;
+                string user_IDString = "";
+                int user_IDInt = 0;
+                string insertQuery = "INSERT INTO borrows(user_id, username, inventory_id, current_state) VALUES (" +
+                    "@user_id, @username, @inventory_id, @current_state)";
+                string userIDQuery = "SELECT id FROM users WHERE username = @username";
+                try
+                {
+                    // get user_id from username
+                    using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(userIDQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("username", NameBox.Text.Trim());
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                user_IDString = reader["id"].ToString();
+                                user_IDInt = int.Parse(user_IDString);
+                            }
+                        }
+                    }
+                    int inventory_IDInt = int.Parse(inventoryIDString);
 
+                    using (Npgsql.NpgsqlCommand command1 = new Npgsql.NpgsqlCommand(insertQuery, connection))
+                    {
+                        command1.Parameters.AddWithValue("user_id", user_IDInt);
+                        command1.Parameters.AddWithValue("username", NameBox.Text.Trim());
+                        command1.Parameters.AddWithValue("inventory_id", inventory_IDInt);
+                        command1.Parameters.AddWithValue("current_state", current_state);
+
+                        command1.ExecuteNonQuery();
+                        updateDataGrid();
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+                
+            }
         }
 
         private void updateDataGrid()
@@ -113,9 +153,9 @@ namespace Library_Management
             {
                 string bookReturn = selectBookBorrow.bookReturn;
                 string inventoryReturn = selectBookBorrow.inventoryReturn;
-                inventoryID = inventoryReturn;
+                inventoryIDString = inventoryReturn;
                 BookBox.Text = bookReturn;
-                inventoryID = getInvetoryID(bookReturn);
+                inventoryIDString = getInvetoryID(bookReturn);
                 updateInfoLabels(bookReturn);
             }
             selectBookBorrow.Dispose();
