@@ -28,8 +28,8 @@ namespace Library_Management
                 int current_state = 0;
                 string user_IDString = "";
                 int user_IDInt = 0;
-                string insertQuery = "INSERT INTO borrows(user_id, username, inventory_id, current_state) VALUES (" +
-                    "@user_id, @username, @inventory_id, @current_state)";
+                string insertQuery = "INSERT INTO borrows(user_id, username, inventory_id, current_state, date_due) VALUES (" +
+                    "@user_id, @username, @inventory_id, @current_state, @date_due)";
                 string userIDQuery = "SELECT id FROM users WHERE username = @username";
                 try
                 {
@@ -54,6 +54,7 @@ namespace Library_Management
                         command1.Parameters.AddWithValue("username", NameBox.Text.Trim());
                         command1.Parameters.AddWithValue("inventory_id", inventory_IDInt);
                         command1.Parameters.AddWithValue("current_state", current_state);
+                        command1.Parameters.AddWithValue("date_due", DueDatePicker.Value);
 
                         command1.ExecuteNonQuery();
                         updateDataGrid();
@@ -68,7 +69,7 @@ namespace Library_Management
         private void updateDataGrid()
         {
             BindingSource bindingSource = new BindingSource();
-            string borrowsQuery = "SELECT * FROM borrows";
+            string borrowsQuery = "SELECT id, username, current_state, date_added, date_due FROM borrows";
 
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {

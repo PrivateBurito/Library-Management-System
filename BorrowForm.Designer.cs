@@ -44,7 +44,10 @@
             BookBox = new TextBox();
             SelectUserButton = new Button();
             SelectBookButton = new Button();
-            QuantityBox = new TextBox();
+            DueDatePicker = new DateTimePicker();
+            label2 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -56,12 +59,12 @@
             BorrowGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             BorrowGrid.Location = new Point(23, 32);
             BorrowGrid.Name = "BorrowGrid";
-            BorrowGrid.Size = new Size(333, 141);
+            BorrowGrid.Size = new Size(422, 141);
             BorrowGrid.TabIndex = 1;
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(154, 257);
+            AddButton.Location = new Point(296, 311);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(91, 23);
             AddButton.TabIndex = 2;
@@ -89,9 +92,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label6);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(373, 32);
+            groupBox1.Location = new Point(451, 32);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(333, 141);
+            groupBox1.Size = new Size(255, 141);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Selected Book Information";
@@ -174,7 +177,7 @@
             // 
             // NameBox
             // 
-            NameBox.Location = new Point(23, 199);
+            NameBox.Location = new Point(105, 199);
             NameBox.Name = "NameBox";
             NameBox.PlaceholderText = "User";
             NameBox.Size = new Size(125, 23);
@@ -182,7 +185,7 @@
             // 
             // BookBox
             // 
-            BookBox.Location = new Point(23, 228);
+            BookBox.Location = new Point(105, 229);
             BookBox.Name = "BookBox";
             BookBox.PlaceholderText = "Book";
             BookBox.Size = new Size(125, 23);
@@ -190,7 +193,7 @@
             // 
             // SelectUserButton
             // 
-            SelectUserButton.Location = new Point(154, 198);
+            SelectUserButton.Location = new Point(296, 199);
             SelectUserButton.Name = "SelectUserButton";
             SelectUserButton.Size = new Size(91, 23);
             SelectUserButton.TabIndex = 12;
@@ -200,7 +203,7 @@
             // 
             // SelectBookButton
             // 
-            SelectBookButton.Location = new Point(154, 228);
+            SelectBookButton.Location = new Point(296, 233);
             SelectBookButton.Name = "SelectBookButton";
             SelectBookButton.Size = new Size(91, 23);
             SelectBookButton.TabIndex = 13;
@@ -208,20 +211,49 @@
             SelectBookButton.UseVisualStyleBackColor = true;
             SelectBookButton.Click += SelectBookButton_Click;
             // 
-            // QuantityBox
+            // DueDatePicker
             // 
-            QuantityBox.Location = new Point(23, 257);
-            QuantityBox.Name = "QuantityBox";
-            QuantityBox.PlaceholderText = "Quantity";
-            QuantityBox.Size = new Size(100, 23);
-            QuantityBox.TabIndex = 14;
+            DueDatePicker.Location = new Point(105, 259);
+            DueDatePicker.Name = "DueDatePicker";
+            DueDatePicker.Size = new Size(188, 23);
+            DueDatePicker.TabIndex = 14;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(33, 207);
+            label2.Name = "label2";
+            label2.Size = new Size(63, 15);
+            label2.TabIndex = 15;
+            label2.Text = "Username:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(33, 237);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 15);
+            label7.TabIndex = 16;
+            label7.Text = "Book ID:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(33, 265);
+            label8.Name = "label8";
+            label8.Size = new Size(58, 15);
+            label8.TabIndex = 17;
+            label8.Text = "Due Date:";
             // 
             // BorrowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(727, 314);
-            Controls.Add(QuantityBox);
+            ClientSize = new Size(727, 346);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label2);
+            Controls.Add(DueDatePicker);
             Controls.Add(SelectBookButton);
             Controls.Add(SelectUserButton);
             Controls.Add(BookBox);
@@ -257,6 +289,9 @@
         private TextBox BookBox;
         private Button SelectUserButton;
         private Button SelectBookButton;
-        private TextBox QuantityBox;
+        private DateTimePicker DueDatePicker;
+        private Label label2;
+        private Label label7;
+        private Label label8;
     }
 }
