@@ -57,6 +57,8 @@ namespace Library_Management
                         command1.Parameters.AddWithValue("date_due", DueDatePicker.Value);
 
                         command1.ExecuteNonQuery();
+
+                        decreaseQuantityOfBook(inventory_IDInt);
                         updateDataGrid();
                     }
                 }
@@ -193,6 +195,30 @@ namespace Library_Management
                 }
             }
             return inventoryReturn;
+        }
+
+        private void decreaseQuantityOfBook(int inventory_id)
+        {
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    string addQuantityQuery = "UPDATE inventory SET quantity = quantity - @quantity " +
+                        "WHERE id = @id";
+                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addQuantityQuery, connection))
+                    {
+                        comm1.Parameters.AddWithValue("quantity", 1);
+                        comm1.Parameters.AddWithValue("id", inventory_id);
+
+                        comm1.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

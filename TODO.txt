@@ -6,6 +6,7 @@ Inventory Feature:
 3. (COMPLETE) Add book name to the inventory schema
 
 Borrow Feature:
-1. Add borrow binded to user id
+1. (COMPLETE) Add borrow binded to user id
+2. Add change states, 0 = not returned, 1 = returned
 2. Add multiple borrows at the same time
 3. Remove borrows

@@ -48,8 +48,10 @@
             label2 = new Label();
             label7 = new Label();
             label8 = new Label();
+            BorrowGroupBox = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
+            BorrowGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // BorrowGrid
@@ -64,7 +66,8 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(296, 311);
+            AddButton.Font = new Font("Segoe UI", 9F);
+            AddButton.Location = new Point(97, 123);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(91, 23);
             AddButton.TabIndex = 2;
@@ -177,23 +180,26 @@
             // 
             // NameBox
             // 
-            NameBox.Location = new Point(105, 199);
+            NameBox.Font = new Font("Segoe UI", 9F);
+            NameBox.Location = new Point(78, 25);
             NameBox.Name = "NameBox";
             NameBox.PlaceholderText = "User";
-            NameBox.Size = new Size(125, 23);
+            NameBox.Size = new Size(91, 23);
             NameBox.TabIndex = 10;
             // 
             // BookBox
             // 
-            BookBox.Location = new Point(105, 229);
+            BookBox.Font = new Font("Segoe UI", 9F);
+            BookBox.Location = new Point(78, 54);
             BookBox.Name = "BookBox";
             BookBox.PlaceholderText = "Book";
-            BookBox.Size = new Size(125, 23);
+            BookBox.Size = new Size(91, 23);
             BookBox.TabIndex = 11;
             // 
             // SelectUserButton
             // 
-            SelectUserButton.Location = new Point(296, 199);
+            SelectUserButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SelectUserButton.Location = new Point(175, 25);
             SelectUserButton.Name = "SelectUserButton";
             SelectUserButton.Size = new Size(91, 23);
             SelectUserButton.TabIndex = 12;
@@ -203,7 +209,8 @@
             // 
             // SelectBookButton
             // 
-            SelectBookButton.Location = new Point(296, 233);
+            SelectBookButton.Font = new Font("Segoe UI", 9F);
+            SelectBookButton.Location = new Point(175, 54);
             SelectBookButton.Name = "SelectBookButton";
             SelectBookButton.Size = new Size(91, 23);
             SelectBookButton.TabIndex = 13;
@@ -213,7 +220,8 @@
             // 
             // DueDatePicker
             // 
-            DueDatePicker.Location = new Point(105, 259);
+            DueDatePicker.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DueDatePicker.Location = new Point(78, 83);
             DueDatePicker.Name = "DueDatePicker";
             DueDatePicker.Size = new Size(188, 23);
             DueDatePicker.TabIndex = 14;
@@ -221,46 +229,60 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(33, 207);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.Location = new Point(6, 29);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(67, 15);
             label2.TabIndex = 15;
             label2.Text = "Username:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(33, 237);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(6, 58);
             label7.Name = "label7";
-            label7.Size = new Size(51, 15);
+            label7.Size = new Size(55, 15);
             label7.TabIndex = 16;
             label7.Text = "Book ID:";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(33, 265);
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label8.Location = new Point(6, 87);
             label8.Name = "label8";
-            label8.Size = new Size(58, 15);
+            label8.Size = new Size(63, 15);
             label8.TabIndex = 17;
             label8.Text = "Due Date:";
+            // 
+            // BorrowGroupBox
+            // 
+            BorrowGroupBox.Controls.Add(label2);
+            BorrowGroupBox.Controls.Add(label8);
+            BorrowGroupBox.Controls.Add(NameBox);
+            BorrowGroupBox.Controls.Add(AddButton);
+            BorrowGroupBox.Controls.Add(label7);
+            BorrowGroupBox.Controls.Add(BookBox);
+            BorrowGroupBox.Controls.Add(SelectUserButton);
+            BorrowGroupBox.Controls.Add(DueDatePicker);
+            BorrowGroupBox.Controls.Add(SelectBookButton);
+            BorrowGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            BorrowGroupBox.Location = new Point(24, 188);
+            BorrowGroupBox.Name = "BorrowGroupBox";
+            BorrowGroupBox.Size = new Size(275, 168);
+            BorrowGroupBox.TabIndex = 18;
+            BorrowGroupBox.TabStop = false;
+            BorrowGroupBox.Text = "Add Borrow";
             // 
             // BorrowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(727, 346);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label2);
-            Controls.Add(DueDatePicker);
-            Controls.Add(SelectBookButton);
-            Controls.Add(SelectUserButton);
-            Controls.Add(BookBox);
-            Controls.Add(NameBox);
+            ClientSize = new Size(727, 381);
+            Controls.Add(BorrowGroupBox);
             Controls.Add(groupBox1);
             Controls.Add(label1);
-            Controls.Add(AddButton);
             Controls.Add(BorrowGrid);
             Name = "BorrowForm";
             Text = "BorrowForm";
@@ -268,6 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            BorrowGroupBox.ResumeLayout(false);
+            BorrowGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -293,5 +317,6 @@
         private Label label2;
         private Label label7;
         private Label label8;
+        private GroupBox BorrowGroupBox;
     }
 }
