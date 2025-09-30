@@ -1,4 +1,5 @@
 ﻿using Library_Management.Borrow_Forms;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,7 @@ namespace Library_Management
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
 
-                
+
             }
         }
 
@@ -100,11 +101,13 @@ namespace Library_Management
         private void BorrowForm_Load(object sender, EventArgs e)
         {
             updateDataGrid();
+            string[] states = { "due", "overdue", "returned" };
+            StateBox.Items.AddRange(states);
         }
 
         private void updateInfoLabels(string bookIDString)
         {
-            
+
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
@@ -164,7 +167,7 @@ namespace Library_Management
             selectBookBorrow.Dispose();
         }
 
-        private string getInvetoryID(string bookIDString) 
+        private string getInvetoryID(string bookIDString)
         {
             string inventoryReturn = "";
             string query = "SELECT id FROM inventory WHERE book_id = @book_id";
@@ -218,6 +221,43 @@ namespace Library_Management
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void ModifyButton_Click(object sender, EventArgs e)
+        {
+            int idInt = int.Parse(BorrowBox.Text.Trim());
+            using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                try
+                {
+                    string query = "UPDATE borrows SET current_state = @new_state WHERE id = @id";
+                    using (Npgsql.NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("new_state", StateBox.Text.Trim());
+                        command.Parameters.AddWithValue("id", idInt);
+
+                        command.ExecuteNonQuery();
+                        updateDataGrid();
+                    }
+                }
+                catch (PostgresException ex) { MessageBox.Show(ex.Message); }
+            }
+        }
+
+        private void BorrowGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell clickedCell = BorrowGrid.Rows[e.RowIndex].Cells[0];
+
+                object cellValue = clickedCell.Value;
+                string? cellValueString = cellValue.ToString();
+                if (string.IsNullOrEmpty(cellValueString)) { return; }
+                BorrowGrid.Text = cellValueString;
+
+                BorrowBox.Text = cellValueString;
             }
         }
     }
