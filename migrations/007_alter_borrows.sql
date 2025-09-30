@@ -1,0 +1,2 @@
+ALTER TABLE borrows
+ADD COLUMN date_due DATE NOT NULL;
