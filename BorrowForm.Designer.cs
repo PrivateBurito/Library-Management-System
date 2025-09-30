@@ -49,9 +49,18 @@
             label7 = new Label();
             label8 = new Label();
             BorrowGroupBox = new GroupBox();
+            ModifyBorrow = new GroupBox();
+            StateBox = new ComboBox();
+            label9 = new Label();
+            BorrowBox = new TextBox();
+            ModifyButton = new Button();
+            label11 = new Label();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
             BorrowGroupBox.SuspendLayout();
+            ModifyBorrow.SuspendLayout();
             SuspendLayout();
             // 
             // BorrowGrid
@@ -63,6 +72,7 @@
             BorrowGrid.Name = "BorrowGrid";
             BorrowGrid.Size = new Size(422, 141);
             BorrowGrid.TabIndex = 1;
+            BorrowGrid.CellClick += BorrowGrid_CellClick;
             // 
             // AddButton
             // 
@@ -275,11 +285,98 @@
             BorrowGroupBox.TabStop = false;
             BorrowGroupBox.Text = "Add Borrow";
             // 
+            // ModifyBorrow
+            // 
+            ModifyBorrow.Controls.Add(StateBox);
+            ModifyBorrow.Controls.Add(label9);
+            ModifyBorrow.Controls.Add(BorrowBox);
+            ModifyBorrow.Controls.Add(ModifyButton);
+            ModifyBorrow.Controls.Add(label11);
+            ModifyBorrow.Controls.Add(button2);
+            ModifyBorrow.Controls.Add(button3);
+            ModifyBorrow.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            ModifyBorrow.Location = new Point(328, 188);
+            ModifyBorrow.Name = "ModifyBorrow";
+            ModifyBorrow.Size = new Size(275, 168);
+            ModifyBorrow.TabIndex = 19;
+            ModifyBorrow.TabStop = false;
+            ModifyBorrow.Text = "Modify Borrow";
+            // 
+            // StateBox
+            // 
+            StateBox.Font = new Font("Segoe UI", 9F);
+            StateBox.FormattingEnabled = true;
+            StateBox.Location = new Point(78, 55);
+            StateBox.Name = "StateBox";
+            StateBox.Size = new Size(91, 23);
+            StateBox.TabIndex = 17;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label9.Location = new Point(6, 29);
+            label9.Name = "label9";
+            label9.Size = new Size(68, 15);
+            label9.TabIndex = 15;
+            label9.Text = "Borrow ID:";
+            // 
+            // BorrowBox
+            // 
+            BorrowBox.Font = new Font("Segoe UI", 9F);
+            BorrowBox.Location = new Point(78, 25);
+            BorrowBox.Name = "BorrowBox";
+            BorrowBox.PlaceholderText = "Borrow ID";
+            BorrowBox.Size = new Size(91, 23);
+            BorrowBox.TabIndex = 10;
+            // 
+            // ModifyButton
+            // 
+            ModifyButton.Font = new Font("Segoe UI", 9F);
+            ModifyButton.Location = new Point(97, 123);
+            ModifyButton.Name = "ModifyButton";
+            ModifyButton.Size = new Size(91, 23);
+            ModifyButton.TabIndex = 2;
+            ModifyButton.Text = "Modify";
+            ModifyButton.UseVisualStyleBackColor = true;
+            ModifyButton.Click += ModifyButton_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label11.Location = new Point(6, 58);
+            label11.Name = "label11";
+            label11.Size = new Size(40, 15);
+            label11.TabIndex = 16;
+            label11.Text = "State:";
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Location = new Point(175, 25);
+            button2.Name = "button2";
+            button2.Size = new Size(91, 23);
+            button2.TabIndex = 12;
+            button2.Text = "Select User";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 9F);
+            button3.Location = new Point(175, 54);
+            button3.Name = "button3";
+            button3.Size = new Size(91, 23);
+            button3.TabIndex = 13;
+            button3.Text = "Select Book";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // BorrowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(727, 381);
+            Controls.Add(ModifyBorrow);
             Controls.Add(BorrowGroupBox);
             Controls.Add(groupBox1);
             Controls.Add(label1);
@@ -292,6 +389,8 @@
             groupBox1.PerformLayout();
             BorrowGroupBox.ResumeLayout(false);
             BorrowGroupBox.PerformLayout();
+            ModifyBorrow.ResumeLayout(false);
+            ModifyBorrow.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -318,5 +417,13 @@
         private Label label7;
         private Label label8;
         private GroupBox BorrowGroupBox;
+        private GroupBox ModifyBorrow;
+        private Label label9;
+        private TextBox BorrowBox;
+        private Button ModifyButton;
+        private Label label11;
+        private Button button2;
+        private Button button3;
+        private ComboBox StateBox;
     }
 }
