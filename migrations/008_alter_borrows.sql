@@ -5,7 +5,7 @@ CREATE TABLE borrows(
     user_id INTEGER REFERENCES users(id) ON DELETE RESTRICT NOT NULL,
     username VARCHAR(30) NOT NULL,
     inventory_id INTEGER REFERENCES inventory(id) ON DELETE RESTRICT NOT NULL,
-    current_state INTEGER NOT NULL,
+    current_state VARCHAR(32) NOT NULL,
     date_added DATE NOT NULL DEFAULT CURRENT_DATE,
     date_due DATE NOT NULL
 );

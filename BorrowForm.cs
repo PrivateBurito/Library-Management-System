@@ -25,7 +25,7 @@ namespace Library_Management
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
-                int current_state = 0;
+                string current_state = "due";
                 string user_IDString = "";
                 int user_IDInt = 0;
                 string insertQuery = "INSERT INTO borrows(user_id, username, inventory_id, current_state, date_due) VALUES (" +
