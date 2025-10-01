@@ -16,6 +16,7 @@ namespace Library_Management
     {
         string connectionString = "Host=localhost;Port=5432;Database=librarymanage;Username=postgres;Password=12345678;";
         string inventoryIDString = "";
+        string selectedInventoryString = "";
         public BorrowForm()
         {
             InitializeComponent();
@@ -224,6 +225,31 @@ namespace Library_Management
             }
         }
 
+        private void increaseQuantityOfBook(string inventoryIDString)
+        {
+            using (Npgsql.NpgsqlConnection connection2 = new Npgsql.NpgsqlConnection(connectionString))
+            {
+                connection2.Open();
+                try
+                {
+                    string addQuantityQuery = "UPDATE inventory SET quantity = quantity + @quantity " +
+                        "WHERE id = @id";
+                    using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addQuantityQuery, connection2))
+                    {
+                        int inventoryID = int.Parse(inventoryIDString);
+                        comm1.Parameters.AddWithValue("quantity", 1);
+                        comm1.Parameters.AddWithValue("id", inventoryID);
+
+                        comm1.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         private void ModifyButton_Click(object sender, EventArgs e)
         {
             int idInt = int.Parse(BorrowBox.Text.Trim());
@@ -240,6 +266,10 @@ namespace Library_Management
 
                         command.ExecuteNonQuery();
                         updateDataGrid();
+                    }
+                    if (StateBox.SelectedIndex == 2)
+                    {
+                        increaseQuantityOfBook(selectedInventoryString);
                     }
                 }
                 catch (PostgresException ex) { MessageBox.Show(ex.Message); }
@@ -268,6 +298,7 @@ namespace Library_Management
                     {
                         int borrowID = int.Parse(cellValueString);
                         connection.Open();
+                        // get inventory id
                         using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("id", borrowID);
@@ -276,10 +307,12 @@ namespace Library_Management
                                 if (reader.Read())
                                 {
                                     inventoryIDString = reader["inventory_id"].ToString();
+                                    selectedInventoryString = inventoryIDString;
                                 }
 
                             }
                         }
+                        // get book id
                         using (Npgsql.NpgsqlCommand command1 = new NpgsqlCommand(query2, connection))
                         {
                             int inventoryID = int.Parse(inventoryIDString);
