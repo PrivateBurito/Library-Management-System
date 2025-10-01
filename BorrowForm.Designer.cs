@@ -55,8 +55,6 @@
             BorrowBox = new TextBox();
             ModifyButton = new Button();
             label11 = new Label();
-            button2 = new Button();
-            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
             BorrowGroupBox.SuspendLayout();
@@ -292,12 +290,10 @@
             ModifyBorrow.Controls.Add(BorrowBox);
             ModifyBorrow.Controls.Add(ModifyButton);
             ModifyBorrow.Controls.Add(label11);
-            ModifyBorrow.Controls.Add(button2);
-            ModifyBorrow.Controls.Add(button3);
             ModifyBorrow.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             ModifyBorrow.Location = new Point(328, 188);
             ModifyBorrow.Name = "ModifyBorrow";
-            ModifyBorrow.Size = new Size(275, 168);
+            ModifyBorrow.Size = new Size(178, 168);
             ModifyBorrow.TabIndex = 19;
             ModifyBorrow.TabStop = false;
             ModifyBorrow.Text = "Modify Borrow";
@@ -333,7 +329,7 @@
             // ModifyButton
             // 
             ModifyButton.Font = new Font("Segoe UI", 9F);
-            ModifyButton.Location = new Point(97, 123);
+            ModifyButton.Location = new Point(78, 87);
             ModifyButton.Name = "ModifyButton";
             ModifyButton.Size = new Size(91, 23);
             ModifyButton.TabIndex = 2;
@@ -350,26 +346,6 @@
             label11.Size = new Size(40, 15);
             label11.TabIndex = 16;
             label11.Text = "State:";
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(175, 25);
-            button2.Name = "button2";
-            button2.Size = new Size(91, 23);
-            button2.TabIndex = 12;
-            button2.Text = "Select User";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Segoe UI", 9F);
-            button3.Location = new Point(175, 54);
-            button3.Name = "button3";
-            button3.Size = new Size(91, 23);
-            button3.TabIndex = 13;
-            button3.Text = "Select Book";
-            button3.UseVisualStyleBackColor = true;
             // 
             // BorrowForm
             // 
@@ -422,8 +398,6 @@
         private TextBox BorrowBox;
         private Button ModifyButton;
         private Label label11;
-        private Button button2;
-        private Button button3;
         private ComboBox StateBox;
     }
 }

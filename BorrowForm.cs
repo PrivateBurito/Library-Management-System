@@ -256,8 +256,50 @@ namespace Library_Management
                 string? cellValueString = cellValue.ToString();
                 if (string.IsNullOrEmpty(cellValueString)) { return; }
                 BorrowGrid.Text = cellValueString;
-
                 BorrowBox.Text = cellValueString;
+
+                string query = "SELECT inventory_id FROM borrows WHERE id = @id";
+                string query2 = "SELECT book_id FROM inventory WHERE id = @id";
+                string inventoryIDString = "";
+                
+                using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
+                {
+                    try
+                    {
+                        int borrowID = int.Parse(cellValueString);
+                        connection.Open();
+                        using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("id", borrowID);
+                            using (var reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    inventoryIDString = reader["inventory_id"].ToString();
+                                }
+
+                            }
+                        }
+                        using (Npgsql.NpgsqlCommand command1 = new NpgsqlCommand(query2, connection))
+                        {
+                            int inventoryID = int.Parse(inventoryIDString);
+                            command1.Parameters.AddWithValue("id", inventoryID);
+                            using (var reader = command1.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    string bookID = reader["book_id"].ToString();
+                                    updateInfoLabels(bookID);
+                                }
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {   
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
         }
     }
