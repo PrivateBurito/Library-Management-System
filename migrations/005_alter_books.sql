@@ -7,10 +7,3 @@ CREATE TABLE books (
     year INTEGER,
     barcode_id INTEGER UNIQUE NOT NULL
 );
-
-CREATE TABLE inventory (
-    id SERIAL PRIMARY KEY,
-    quantity INTEGER NOT NULL,
-    book_id INTEGER REFERENCES books(id) ON DELETE RESTRICT UNIQUE NOT NULL,
-    name VARCHAR(255) NOT NULL
-);
