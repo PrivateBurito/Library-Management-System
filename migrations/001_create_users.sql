@@ -8,3 +8,5 @@ CREATE TABLE users (
     email VARCHAR(255) UNIQUE NOT NULL,
     is_admin BOOLEAN NOT NULL
 );
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
