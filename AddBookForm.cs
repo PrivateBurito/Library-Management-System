@@ -29,14 +29,14 @@ namespace Library_Management
                 try
                 {
                     Random random = new Random();
-                    int idString = generateUniqueID();
+                    int barcodeID = int.Parse(barcodeBox.Text);
                     int yearInt = int.Parse(YearBox.Text);
                     string query = "INSERT INTO books(name, author, year, barcode_id) VALUES (" +
                         "@name, @author, @year, @barcode_id)";
 
                     using (Npgsql.NpgsqlCommand cmd = new Npgsql.NpgsqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("barcode_id", idString);
+                        cmd.Parameters.AddWithValue("barcode_id", barcodeID);
                         cmd.Parameters.AddWithValue("name", NameBox.Text);
                         cmd.Parameters.AddWithValue("author", AuthorBox.Text);
                         cmd.Parameters.AddWithValue("year", yearInt);

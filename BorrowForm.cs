@@ -178,11 +178,6 @@ namespace Library_Management
             selectBookBorrow.Dispose();
         }
 
-        private string getBookID(string barcode)
-        {
-            return "";
-        }
-
         private string getInvetoryID(string barcodeIDString)
         {
             string inventoryReturn = "";
@@ -304,7 +299,7 @@ namespace Library_Management
                 BorrowBox.Text = cellValueString;
 
                 string query = "SELECT inventory_id FROM borrows WHERE id = @id";
-                string query2 = "SELECT book_id FROM inventory WHERE id = @id";
+                string query2 = "SELECT barcode_id FROM inventory WHERE id = @id";
                 string inventoryIDString = "";
 
                 using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
@@ -336,8 +331,8 @@ namespace Library_Management
                             {
                                 if (reader.Read())
                                 {
-                                    string bookID = reader["book_id"].ToString();
-                                    updateInfoLabels(bookID);
+                                    string barcodeID = reader["barcode_id"].ToString();
+                                    updateInfoLabels(barcodeID);
                                 }
 
                             }

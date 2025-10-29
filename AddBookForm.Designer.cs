@@ -36,6 +36,7 @@
             NameBox = new TextBox();
             YearBox = new TextBox();
             AuthorBox = new TextBox();
+            barcodeBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             // DeleteButton
             // 
-            DeleteButton.Location = new Point(65, 248);
+            DeleteButton.Location = new Point(65, 263);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(75, 23);
             DeleteButton.TabIndex = 17;
@@ -59,7 +60,7 @@
             // 
             // addBooksButton
             // 
-            addBooksButton.Location = new Point(65, 164);
+            addBooksButton.Location = new Point(65, 190);
             addBooksButton.Name = "addBooksButton";
             addBooksButton.Size = new Size(75, 23);
             addBooksButton.TabIndex = 10;
@@ -69,7 +70,7 @@
             // 
             // deleteIDBox
             // 
-            deleteIDBox.Location = new Point(52, 219);
+            deleteIDBox.Location = new Point(52, 234);
             deleteIDBox.Name = "deleteIDBox";
             deleteIDBox.PlaceholderText = "Enter ID";
             deleteIDBox.Size = new Size(100, 23);
@@ -95,7 +96,7 @@
             // 
             // YearBox
             // 
-            YearBox.Location = new Point(52, 135);
+            YearBox.Location = new Point(52, 129);
             YearBox.Name = "YearBox";
             YearBox.PlaceholderText = "Year Pub.";
             YearBox.Size = new Size(100, 23);
@@ -103,17 +104,26 @@
             // 
             // AuthorBox
             // 
-            AuthorBox.Location = new Point(52, 99);
+            AuthorBox.Location = new Point(52, 96);
             AuthorBox.Name = "AuthorBox";
             AuthorBox.PlaceholderText = "Author";
             AuthorBox.Size = new Size(100, 23);
             AuthorBox.TabIndex = 13;
+            // 
+            // barcodeBox
+            // 
+            barcodeBox.Location = new Point(52, 162);
+            barcodeBox.Name = "barcodeBox";
+            barcodeBox.PlaceholderText = "Barcode";
+            barcodeBox.Size = new Size(100, 23);
+            barcodeBox.TabIndex = 18;
             // 
             // AddBookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(714, 327);
+            Controls.Add(barcodeBox);
             Controls.Add(dataGridView1);
             Controls.Add(DeleteButton);
             Controls.Add(addBooksButton);
@@ -139,5 +149,6 @@
         private TextBox NameBox;
         private TextBox YearBox;
         private TextBox AuthorBox;
+        private TextBox barcodeBox;
     }
 }

@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:borrowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|c:\\users\\kenneth\\documents\\visual studio 2022\\projects\\library management\\addbookform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addbookform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|c:\\users\\kenneth\\documents\\visual studio 2022\\projects\\library management\\addbookform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:addbookform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\borrowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8237607F-D6E3-4E79-B38F-D6F6E6667A6E}|Library Management.csproj|solutionrelative:borrowform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -30,12 +38,12 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "BorrowForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
               "RelativeDocumentMoniker": "BorrowForm.cs",
-              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs [Design]",
-              "RelativeToolTip": "BorrowForm.cs [Design]",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs [Design]*",
+              "RelativeToolTip": "BorrowForm.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-24T06:17:41.913Z",
               "IsPinned": true,
@@ -47,9 +55,9 @@
               "Title": "BorrowForm.cs",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
               "RelativeDocumentMoniker": "BorrowForm.cs",
-              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
-              "RelativeToolTip": "BorrowForm.cs",
-              "ViewState": "AgIAAHEBAAAAAAAAAADgv38BAAAYAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs*",
+              "RelativeToolTip": "BorrowForm.cs*",
+              "ViewState": "AgIAADoBAAAAAAAAAAAvwE8BAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-24T06:27:34.889Z",
               "IsPinned": true,
@@ -69,7 +77,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddBookForm.cs",
+              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs",
+              "RelativeDocumentMoniker": "AddBookForm.cs",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs",
+              "RelativeToolTip": "AddBookForm.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAewBkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T15:59:11.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AddBookForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs",
+              "RelativeDocumentMoniker": "AddBookForm.cs",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\AddBookForm.cs [Design]",
+              "RelativeToolTip": "AddBookForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T15:58:09.302Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "SelectBookBorrow.cs",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\Borrow Forms\\SelectBookBorrow.cs",
               "RelativeDocumentMoniker": "Borrow Forms\\SelectBookBorrow.cs",
@@ -82,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "SelectBookBorrow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\Borrow Forms\\SelectBookBorrow.cs",
               "RelativeDocumentMoniker": "Borrow Forms\\SelectBookBorrow.cs",
