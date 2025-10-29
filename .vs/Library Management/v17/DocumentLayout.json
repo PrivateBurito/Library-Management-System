@@ -18,35 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BorrowForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
-              "RelativeDocumentMoniker": "BorrowForm.cs",
-              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs [Design]",
-              "RelativeToolTip": "BorrowForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T06:17:41.913Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BorrowForm.cs",
-              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
-              "RelativeDocumentMoniker": "BorrowForm.cs",
-              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
-              "RelativeToolTip": "BorrowForm.cs",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAAwBcBAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T06:27:34.889Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -58,6 +31,33 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BorrowForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
+              "RelativeDocumentMoniker": "BorrowForm.cs",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs [Design]*",
+              "RelativeToolTip": "BorrowForm.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T06:17:41.913Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BorrowForm.cs",
+              "DocumentMoniker": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs",
+              "RelativeDocumentMoniker": "BorrowForm.cs",
+              "ToolTip": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\BorrowForm.cs*",
+              "RelativeToolTip": "BorrowForm.cs*",
+              "ViewState": "AgIAAGsBAAAAAAAAAAAewIABAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T06:27:34.889Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,4 +1,6 @@
-﻿using Library_Management.Borrow_Forms;
+﻿using InTheHand.Net.Bluetooth;
+using InTheHand.Net.Sockets;
+using Library_Management.Borrow_Forms;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -6,9 +8,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Library_Management
 {
@@ -17,6 +22,12 @@ namespace Library_Management
         string connectionString = "Host=localhost;Port=5432;Database=librarymanage;Username=postgres;Password=12345678;";
         string inventoryIDString = "";
         string selectedInventoryString = "";
+
+        private BluetoothListener listener;
+        private BluetoothClient bluetoothClient;
+        private NetworkStream networkStream;
+        private Thread listenThread;
+        private bool running = false;
         public BorrowForm()
         {
             InitializeComponent();
@@ -101,6 +112,7 @@ namespace Library_Management
 
         private void BorrowForm_Load(object sender, EventArgs e)
         {
+            StartBluetoothServer();
             updateDataGrid();
             string[] states = { "due", "overdue", "returned" };
             StateBox.Items.AddRange(states);
@@ -291,7 +303,7 @@ namespace Library_Management
                 string query = "SELECT inventory_id FROM borrows WHERE id = @id";
                 string query2 = "SELECT book_id FROM inventory WHERE id = @id";
                 string inventoryIDString = "";
-                
+
                 using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
                 {
                     try
@@ -329,11 +341,67 @@ namespace Library_Management
                         }
                     }
                     catch (Exception ex)
-                    {   
+                    {
                         MessageBox.Show(ex.Message);
                     }
                 }
             }
         }
+
+        private Guid mUUID = BluetoothService.SerialPort;
+
+        private void StartBluetoothServer()
+        {
+            Thread bluetoothServerThread = new Thread(new ThreadStart(ServerConnectThread));
+            bluetoothServerThread.Start();
+        }
+        private void ServerConnectThread()
+        {
+            BluetoothListener blueListener = new BluetoothListener(mUUID);
+            blueListener.Start();
+
+            // Loop to accept multiple connections or handle a single connection
+            while (true)
+            {
+                BluetoothClient conn = blueListener.AcceptBluetoothClient(); // Blocks until a client connects
+                Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("Cliend has connected."); }); // Update UI on main thread
+
+                Stream mStream = conn.GetStream();
+                byte[] buffer = new byte[1024]; // Adjust buffer size as needed
+                int bytesRead;
+
+                try
+                {
+                    while ((bytesRead = mStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        // Process received data (e.g., convert to string, update UI)
+                        string receivedData = System.Text.Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        //Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("Writing from stream..."); });
+                        Invoke((MethodInvoker)delegate { UpdateUI(receivedData); });
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("Error reading stream: " + ex.Message); });
+                }
+                finally
+                {
+                    mStream.Close();
+                    conn.Close();
+                }
+            }
+        }
+
+        private void UpdateUI(string message)
+        {
+            // Method to safely update UI elements from a background thread
+            // e.g., yourTextBox.AppendText(message + Environment.NewLine);
+            BookBox.Text = message;
+        }
+        private void bluetoothStatusUpdate(string message)
+        {
+            bluetoothStatusLabel.Text = message;
+        }
+
     }
 }

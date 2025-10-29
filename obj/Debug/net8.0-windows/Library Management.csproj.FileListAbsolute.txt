@@ -28,3 +28,4 @@ C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\De
 C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.BorrowForm.resources
 C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.Borrow_Forms.SelectBookBorrow.resources
 C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\obj\Debug\net8.0-windows\Library_Management.Borrow_Forms.SelectUserBorrow.resources
+C:\Users\Kenneth\Documents\Visual Studio 2022\Projects\Library Management\bin\Debug\net8.0-windows\InTheHand.Net.Personal.dll

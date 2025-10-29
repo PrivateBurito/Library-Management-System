@@ -1,12 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "5d7ZbC9w+xQ=",
+  "dgSpecHash": "AxMOGojTNHg=",
   "success": true,
   "projectFilePath": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\Library Management.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kenneth\\.nuget\\packages\\32feet.net\\3.5.0\\32feet.net.3.5.0.nupkg.sha512",
     "C:\\Users\\Kenneth\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\Kenneth\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\Kenneth\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Package '32feet.NET 3.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "projectPath": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\Library Management.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Kenneth\\Documents\\Visual Studio 2022\\Projects\\Library Management\\Library Management.csproj",
+      "libraryId": "32feet.NET",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
