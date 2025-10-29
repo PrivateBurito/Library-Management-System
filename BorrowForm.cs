@@ -35,6 +35,7 @@ namespace Library_Management
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            inventoryIDString = getInvetoryID(BookBox.Text);
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
@@ -118,19 +119,19 @@ namespace Library_Management
             StateBox.Items.AddRange(states);
         }
 
-        private void updateInfoLabels(string bookIDString)
+        private void updateInfoLabels(string barcodeIDString)
         {
 
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM books WHERE id = @id";
+                string query = "SELECT * FROM books WHERE barcode_id = @barcode_id";
                 try
                 {
-                    int bookID = int.Parse(bookIDString);
+                    int barcodeID = int.Parse(barcodeIDString);
                     using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("id", bookID);
+                        command.Parameters.AddWithValue("barcode_id", barcodeID);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -142,7 +143,7 @@ namespace Library_Management
                                 BookNameLabel.Text = bookName;
                                 AuthorLabel.Text = author;
                                 YearPublishedLabel.Text = year;
-                                IDLabel.Text = bookIDString;
+                                IDLabel.Text = barcodeIDString;
                             }
 
                         }
@@ -170,29 +171,31 @@ namespace Library_Management
             SelectBookBorrow selectBookBorrow = new SelectBookBorrow();
             if (selectBookBorrow.ShowDialog() == DialogResult.OK)
             {
-                string bookReturn = selectBookBorrow.bookReturn;
-                string inventoryReturn = selectBookBorrow.inventoryReturn;
-                inventoryIDString = inventoryReturn;
-                BookBox.Text = bookReturn;
-                inventoryIDString = getInvetoryID(bookReturn);
-                updateInfoLabels(bookReturn);
+                string barcodeIDReturn = selectBookBorrow.barcodeIDReturn;
+                BookBox.Text = barcodeIDReturn;
+                updateInfoLabels(barcodeIDReturn);
             }
             selectBookBorrow.Dispose();
         }
 
-        private string getInvetoryID(string bookIDString)
+        private string getBookID(string barcode)
+        {
+            return "";
+        }
+
+        private string getInvetoryID(string barcodeIDString)
         {
             string inventoryReturn = "";
-            string query = "SELECT id FROM inventory WHERE book_id = @book_id";
+            string query = "SELECT id FROM inventory WHERE barcode_id = @barcode_id";
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 try
                 {
-                    int bookID = int.Parse(bookIDString);
+                    int barcodeID = int.Parse(barcodeIDString);
                     connection.Open();
                     using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("book_id", bookID);
+                        command.Parameters.AddWithValue("barcode_id", barcodeID);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -359,12 +362,13 @@ namespace Library_Management
         {
             BluetoothListener blueListener = new BluetoothListener(mUUID);
             blueListener.Start();
+            Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("Bluetooth Started."); });
 
             // Loop to accept multiple connections or handle a single connection
             while (true)
             {
                 BluetoothClient conn = blueListener.AcceptBluetoothClient(); // Blocks until a client connects
-                Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("Cliend has connected."); }); // Update UI on main thread
+                Invoke((MethodInvoker)delegate { bluetoothStatusUpdate("A client has connected."); }); // Update UI on main thread
 
                 Stream mStream = conn.GetStream();
                 byte[] buffer = new byte[1024]; // Adjust buffer size as needed

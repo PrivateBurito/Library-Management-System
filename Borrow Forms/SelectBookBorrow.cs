@@ -14,8 +14,7 @@ namespace Library_Management.Borrow_Forms
     public partial class SelectBookBorrow : Form
     {
         string connectionString = "Host=localhost;Port=5432;Database=librarymanage;Username=postgres;Password=12345678;";
-        public string bookReturn { get; set; }
-        public string inventoryReturn { get; set; }
+        public string barcodeIDReturn { get; set; }
         public SelectBookBorrow()
         {
             InitializeComponent();
@@ -26,18 +25,18 @@ namespace Library_Management.Borrow_Forms
             updateBookGrid();
         }
 
-        private void updateInfoLabels(string bookIDString)
+        private void updateInfoLabels(string barcode_idString)
         {
-            int bookID = int.Parse(bookIDString);
+            int barcode_id = int.Parse(barcode_idString);
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM books WHERE id = @id";
+                string query = "SELECT name, author, year FROM books WHERE barcode_id = @barcode_id";
                 try
                 {
                     using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("id", bookID);
+                        command.Parameters.AddWithValue("barcode_id", barcode_id);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -49,7 +48,7 @@ namespace Library_Management.Borrow_Forms
                                 BookNameLabel.Text = bookName;
                                 AuthorLabel.Text = author;
                                 YearPublishedLabel.Text = year;
-                                IDLabel.Text = bookIDString;
+                                IDLabel.Text = barcode_idString;
                             }
 
                         }
@@ -72,44 +71,15 @@ namespace Library_Management.Borrow_Forms
                 string? cellValueString = cellValue.ToString();
                 if (string.IsNullOrEmpty(cellValueString)) { return; }
                 BookGrid.Text = cellValueString;
-
-                bookReturn = cellValueString;
-
-                // needs to transfer the code in finding the inventory id to borrow form
-                string query = "SELECT id FROM inventory WHERE book_id = @book_id";
-                using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-                        using (Npgsql.NpgsqlCommand command = new Npgsql.NpgsqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("book_id", cellValue);
-                            using (var reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    inventoryReturn = reader["id"].ToString();
-                                }
-                                
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    updateInfoLabels(cellValueString);
-                }
+                barcodeIDReturn = cellValueString;
+                updateInfoLabels(cellValueString);
             }
         }
 
         private void updateBookGrid()
         {
             BindingSource bindingSource = new BindingSource();
-            string query = "SELECT book_id, name, quantity FROM inventory";
+            string query = "SELECT barcode_id, name, quantity FROM inventory";
             using (Npgsql.NpgsqlConnection connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 try

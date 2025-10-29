@@ -144,8 +144,9 @@ namespace Library_Management
                 try
                 {
                     string? bookName = "";
-                    string addBookQuery = "INSERT INTO inventory(quantity, book_id, name) VALUES (" +
-                        "@quantity, @book_id, @name)";
+                    string? barcode_idString = "";
+                    string addBookQuery = "INSERT INTO inventory(quantity, book_id, name, barcode_id) VALUES (" +
+                        "@quantity, @book_id, @name, @barcode_id)";
                     string getDetailsQuery = "SELECT * FROM books WHERE id = @id";
 
                     // gets the book name
@@ -157,6 +158,7 @@ namespace Library_Management
                             if (reader.Read())
                             {
                                 bookName = reader["name"].ToString();
+                                barcode_idString = reader["barcode_id"].ToString();
                             }
                         }
                     }
@@ -164,12 +166,15 @@ namespace Library_Management
                     {
                         bookName = "NULL";
                     }
+                    int barcode_id = int.Parse(barcode_idString);
                     // Add books to inventory
                     using (Npgsql.NpgsqlCommand comm1 = new Npgsql.NpgsqlCommand(addBookQuery, connection))
                     {
+                        
                         comm1.Parameters.AddWithValue("quantity", quantityInt);
                         comm1.Parameters.AddWithValue("book_id", book_idInt);
                         comm1.Parameters.AddWithValue("name", bookName);
+                        comm1.Parameters.AddWithValue("barcode_id", barcode_id);
                         comm1.ExecuteNonQuery();
                         updateInventoryGrid();
                         MessageBox.Show("Added " + bookName);

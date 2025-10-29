@@ -56,7 +56,6 @@
             ModifyButton = new Button();
             label11 = new Label();
             bluetoothStatusLabel = new TextBox();
-            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)BorrowGrid).BeginInit();
             groupBox1.SuspendLayout();
             BorrowGroupBox.SuspendLayout();
@@ -356,19 +355,11 @@
             bluetoothStatusLabel.Size = new Size(183, 23);
             bluetoothStatusLabel.TabIndex = 21;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(517, 238);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 22;
-            // 
             // BorrowForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(727, 381);
-            Controls.Add(textBox1);
             Controls.Add(bluetoothStatusLabel);
             Controls.Add(ModifyBorrow);
             Controls.Add(BorrowGroupBox);
@@ -418,6 +409,5 @@
         private Label label11;
         private ComboBox StateBox;
         private TextBox bluetoothStatusLabel;
-        private TextBox textBox1;
     }
 }

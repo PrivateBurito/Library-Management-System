@@ -1,0 +1,2 @@
+ALTER TABLE inventory
+ADD COLUMN barcode_id INTEGER REFERENCES books(barcode_id) UNIQUE NOT NULL;
